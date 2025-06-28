@@ -1,22 +1,22 @@
-# Compilação Java
+# Java compiled class files
 *.class
 
-# Diretórios de build
+# Build output directories
 /build/
 /out/
 /bin/
 
-# Gradle
+# Gradle cache and output
 .gradle/
+/gradle-cache/
 /build/
-/.gradle-cache/
 /test-output/
 !gradle-wrapper.jar
 
-# Logs
+# Log files
 *.log
 
-# IDEs (IntelliJ, Eclipse, VSCode)
+# IDE files (IntelliJ, Eclipse, VSCode)
 .idea/
 *.iml
 *.ipr
@@ -26,13 +26,13 @@
 .classpath
 .project
 
-# Arquivos temporários e backups
+# Temporary and backup files
 *.tmp
 *.swp
 *.bak
 *~
 
-# Arquivos de execução
+# Executable archives
 *.jar
 *.war
 *.ear
@@ -44,10 +44,10 @@
 hs_err_pid*
 replay_pid*
 
-# Arquivos de cobertura de testes
+# Test coverage and execution files
 *.exec
 *.coverage
 
-# Arquivos do sistema
+# OS system files
 .DS_Store
 Thumbs.db
