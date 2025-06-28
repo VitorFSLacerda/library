@@ -1,6 +1,5 @@
 package models;
 
-
 public class Main {
     public static void main(String[] args) {
         
@@ -60,6 +59,18 @@ public class Main {
         showUserStatus(user2);
     }
 
+    /**
+     * Attempts to borrow a book from the library for a specified user.
+     * <p>
+     * This method calls {@code library.borrowBook(title, userName)} and handles any
+     * {@link RuntimeException} that may occur during the borrowing process by printing
+     * an error message to the standard output.
+     * </p>
+     *
+     * @param library  the {@link Library} instance from which to borrow the book
+     * @param title    the title of the book to be borrowed
+     * @param userName the name of the user attempting to borrow the book
+     */
     public static void tryToBorrow(Library library, String title, String userName) {
         try {
             library.borrowBook(title, userName);
@@ -68,6 +79,15 @@ public class Main {
         }
     }
 
+    /**
+     * Displays the borrowing status of the specified user.
+     * <p>
+     * If the user has borrowed a book, this method prints the user's name along with the title of the borrowed book.
+     * Otherwise, it indicates that the user has no borrowed books.
+     * </p>
+     *
+     * @param user the {@link User} whose borrowing status will be displayed
+     */
     public static void showUserStatus(User user) {
         String status = user.hasBorrowedBook()
                 ? "has '" + user.getBorrowedBook().getTitle() + "'"
@@ -75,6 +95,12 @@ public class Main {
         System.out.println(user.getName() + " " + status + ".");
     }
 
+    /**
+     * Prints a formatted section header to the console with the specified title.
+     * The header is surrounded by equal signs for emphasis.
+     *
+     * @param title the title of the section to be printed
+     */
     public static void printSection(String title) {
         System.out.println("\n========== " + title + " ==========");
     }
