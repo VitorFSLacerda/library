@@ -8,6 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    java
 }
 
 repositories {
@@ -23,6 +24,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+    
+    implementation("org.xerial:sqlite-jdbc:3.43.2.0")
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,10 +38,13 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass.set("models.Main")
+    applicationDefaultJvmArgs = listOf("-Dfile.encoding=UTF-8")
+
 }
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
