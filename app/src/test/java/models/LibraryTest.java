@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * and proper exception throwing when operations are invalid.
  * </p>
  *
- * @author YourName
  */
 public class LibraryTest {
 
