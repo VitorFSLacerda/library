@@ -1,5 +1,3 @@
-# library
-
 Mini-Projeto: Sistema de Biblioteca
 Descrição: 
 Você está encarregado de desenvolver um sistema de biblioteca.
@@ -31,3 +29,83 @@ Critérios de Avaliação:
 	- Implementação dos métodos de forma clara e funcional.
 	- Tratamento adequado de situações como livros já emprestados e tentativas de empréstimo além do limite por usuário.
 	- Documentação clara e concisa, explicando sua lógica e tomada de decisão.
+
+
+## Library Management System
+
+	This is a mini-project developed as a technical test. It simulates a basic **library system**, 
+	allowing you to manage authors, books, users, and loan operations (borrow/return).
+
+---
+
+## Features
+
+	- Register authors and books
+	- Register users
+	- Borrow and return books
+	- Prevent borrowing if:
+		- The user already has a book
+		- All copies of the book are already borrowed
+	- Includes exception handling and unit tests with JUnit
+	- Auto-generated documentation using Javadoc
+
+---
+
+## Requirements
+
+	- Java 21+
+	- Gradle (or use the wrapper: `./gradlew`)
+	- Git (optional, for cloning the repository)
+
+---
+
+## Running the project
+
+	1. Clone the repository
+	
+		cd library/app
+
+	2. Compile and run the application
+
+		./gradlew run
+
+	Or open and run Main.java in your IDE
+
+---
+
+## Running Tests
+
+	Unit tests are written using JUnit 5. To run the tests:
+
+		./gradlew test
+
+	The test report will be generated at:
+
+		app/build/reports/tests/test/index.html
+
+---
+
+## Project Structure
+
+	app/
+	├── src/
+	│   ├── main/
+	│   │   ├── java/
+	│   │   │   ├── models/         # Core classes: Book, Author, User, Library, etc.
+	│   │   │   ├── exceptions/     # Custom exceptions
+	│   │   │   └── utils/          # Centralized messages
+	│   └── test/
+	│       └── java/models/        # JUnit tests
+	├── build.gradle.kts           # Gradle configuration
+	└── README.md
+
+##  Generating Documentation (Javadoc)
+
+	To generate and open the documentation:
+
+		./gradlew javadoc
+
+	Then open the following file in your browser:
+
+		app/build/docs/javadoc/index.html
+

@@ -46,5 +46,16 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    dependsOn("javadoc")
+}
+
+tasks.javadoc {
+    isFailOnError = false
+    options {
+        encoding = "UTF-8"
+        this as StandardJavadocDocletOptions
+        links("https://docs.oracle.com/en/java/javase/21/docs/api/")
+        addBooleanOption("Xdoclint:none", true)
+    }
 }
 
