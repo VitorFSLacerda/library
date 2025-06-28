@@ -20,7 +20,9 @@ public class Author {
      *
      * @return the author's name as a String
      */
-    public String getName() { return name; }
+    public String getName() { 
+        return name; 
+    }
         
     /**
      * Returns a string representation of the Author object.

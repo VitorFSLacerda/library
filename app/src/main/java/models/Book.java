@@ -17,7 +17,7 @@ import static utils.Messages.*;
 public class Book implements Borrowable, Returnable{
     private String title;
     private Author author;
-    private BookStatus status = BookStatus.AVAILABLE;
+    private BookStatus status;
     private User borrowedBy;
 
     public Book(String title, Author author) {
