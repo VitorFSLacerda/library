@@ -2,48 +2,48 @@ package models;
 
 public class Main {
     public static void main(String[] args) {
-        
         Library library = new Library();
 
-        // Registering authors
+        // ==== Registering Authors ====
         Author author1 = new Author("Robert C. Martin");
         Author author2 = new Author("Joshua Bloch");
         library.registerAuthor(author1);
         library.registerAuthor(author2);
 
-        // Registering books (2 copies of the same title)
-        Book book1 = new Book("Clean Code", author1);
-        Book book2 = new Book("Effective Java", author2);
-        Book book3 = new Book("Clean Code", author1); // second copy
+        // ==== Registering Books ====
+        registerBook(library, "Clean Code", author1);
+        registerBook(library, "Effective Java", author2);
+        registerBook(library, "Clean Code", author1); // Second copy
 
-        library.registerBook(book1);
-        library.registerBook(book2);
-        library.registerBook(book3);
+        printBooks(library, "BOOK LIST STATUS");
 
-        // Registering users
-        User user1 = new User("Alice");
-        User user2 = new User("Bob");
+        // ==== Registering Users ====
+        registerUser(library, "Alice");
+        printUsers(library, "USER LIST STATUS");
+        
+        registerUser(library, "Bob");
+        printUsers(library, "USER LIST STATUS");
 
-        library.registerUser(user1);
-        library.registerUser(user2);
-
-        printSection("INITIAL BOOK LIST");
-        System.out.println(library.getBooksSummary());
-
+        // ==== Borrowing and Returning ====
         printSection("ALICE BORROWS 'Clean Code'");
-        tryToBorrow(library, "Clean Code", "Alice"); // should succeed
+        tryToBorrow(library, "Clean Code", "Alice");
+        printBooks(library, "BOOK LIST STATUS");
 
-        printSection("BOB TRIES TO BORROW 'Clean Code'");
-        tryToBorrow(library, "Clean Code", "Bob"); // should get the second copy
+        printSection("BOB BORROWS 'Clean Code'");
+        tryToBorrow(library, "Clean Code", "Bob");
+        printBooks(library, "BOOK LIST STATUS");
 
         printSection("BOB TRIES TO BORROW 'Effective Java'");
-        tryToBorrow(library, "Effective Java", "Bob"); // should fail
+        tryToBorrow(library, "Effective Java", "Bob");
+        printBooks(library, "BOOK LIST STATUS");
 
         printSection("ALICE RETURNS 'Clean Code'");
         library.returnBook("Alice");
+        printBooks(library, "BOOK LIST STATUS");
 
         printSection("ALICE BORROWS 'Effective Java'");
         tryToBorrow(library, "Effective Java", "Alice");
+        printBooks(library, "BOOK LIST STATUS");
 
         printSection("TRYING TO BORROW NON-EXISTENT BOOK");
         tryToBorrow(library, "Java 101", "Alice");
@@ -51,12 +51,52 @@ public class Main {
         printSection("TRYING TO BORROW WITH NON-EXISTENT USER");
         tryToBorrow(library, "Effective Java", "Carlos");
 
-        printSection("FINAL BOOK LIST");
-        System.out.println(library.getBooksSummary());
+        // ==== Final State ====
+        printBooks(library, "FINAL BOOK LIST");
+        printUsers(library, "FINAL USER STATUS");
+    }
 
-        printSection("FINAL USER STATUS");
-        showUserStatus(user1);
-        showUserStatus(user2);
+    /**
+     * Prints a summary of the books in the given library with a specified section title.
+     *
+     * @param library the Library object containing the books to be summarized
+     * @param title the title to be printed as the section header
+     */
+    private static void printBooks(Library library, String title) {
+        printSection(title);
+        System.out.println(library.getBooksSummary());
+    }
+
+    /**
+     * Prints a summary of users from the given Library instance with a specified title.
+     *
+     * @param library the Library object containing user data
+     * @param title the title to display before the user summary
+     */
+    private static void printUsers(Library library, String title) {
+        printSection(title);
+        System.out.println(library.getUsersSummary());
+    }
+
+    /**
+     * Registers a new user in the library system with the specified name.
+     *
+     * @param library the Library instance where the user will be registered
+     * @param name the name of the user to register
+     */
+    private static void registerUser(Library library, String name) {
+        library.registerUser(new User(name));
+    }
+
+    /**
+     * Registers a new book in the library with the specified title and author.
+     *
+     * @param library the Library instance where the book will be registered
+     * @param title the title of the book to be registered
+     * @param author the Author of the book to be registered
+     */
+    private static void registerBook(Library library, String title, Author author) {
+        library.registerBook(new Book(title, author));
     }
 
     /**
@@ -77,22 +117,6 @@ public class Main {
         } catch (RuntimeException e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
-
-    /**
-     * Displays the borrowing status of the specified user.
-     * <p>
-     * If the user has borrowed a book, this method prints the user's name along with the title of the borrowed book.
-     * Otherwise, it indicates that the user has no borrowed books.
-     * </p>
-     *
-     * @param user the {@link User} whose borrowing status will be displayed
-     */
-    public static void showUserStatus(User user) {
-        String status = user.hasBorrowedBook()
-                ? "has '" + user.getBorrowedBook().getTitle() + "'"
-                : "has no borrowed books";
-        System.out.println(user.getName() + " " + status + ".");
     }
 
     /**

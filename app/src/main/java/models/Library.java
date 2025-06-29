@@ -99,12 +99,13 @@ public class Library {
      */
     public void borrowBook(String bookTitle, String userName) {
  
+        User user = findUserByName(userName);
+
         if (!bookExists(bookTitle)) {
             throw new BookNotFoundException(bookNotFound(bookTitle));
         }
-
         Book book = findBookByTitle(bookTitle);
-        User user = findUserByName(userName);
+
         processBorrow(book, user);
     }
 
@@ -182,6 +183,23 @@ public class Library {
         StringBuilder sb = new StringBuilder();
         for (Book book : books) {
             sb.append(book.toString()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Generates a summary of all users registered in the library.
+     * <p>
+     * Iterates through the list of users and appends each user's string representation,
+     * separated by a newline character, to a StringBuilder. Returns the resulting summary
+     * as a single string.
+     *
+     * @return a string containing the summary of all users in the library, each on a new line
+     */
+    public String getUsersSummary() {
+        StringBuilder sb = new StringBuilder();
+        for (User user : users) {
+            sb.append(user.toString()).append("\n");
         }
         return sb.toString();
     }

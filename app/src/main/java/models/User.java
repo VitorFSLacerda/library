@@ -1,6 +1,8 @@
 package models;
 import exceptions.UserHasBookException;
 import interfaces.Validatable;
+import static utils.Messages.*;
+
 import static utils.Messages.userAlreadyHasBook;
 
 
@@ -93,12 +95,14 @@ public class User implements Validatable {
     }
 
     /**
-     * Returns a string representation of the user, which is the user's name.
+     * Returns a string representation of the User object by delegating to the
+     * {@code Messages.userDescription} method. This method provides a human-readable
+     * description of the user's name and borrowing status.
      *
-     * @return the name of the user as a String
+     * @return a string representation of this User
      */
     @Override
     public String toString() {
-        return name;
+        return userDescription(this);
     }
 }

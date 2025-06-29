@@ -137,4 +137,16 @@ public class Messages {
                 : "Available";
         return "\"" + book.getTitle() + "\" by " + book.getAuthor().getName() + " - " + statusText;
     }
+
+    /**
+     * Generates a descriptive string for a given {@link User} object,
+     * including the user's name and borrowing status.
+     *
+     * @param user the {@link User} object to describe
+     * @return a formatted string describing the user's name and book status
+     */
+    public static String userDescription(User user) {
+        return user.getName() +
+            (user.hasBorrowedBook() ? " (has book: " + user.getBorrowedBook().getTitle() + ")" : " (no book)");
+    }
 }
