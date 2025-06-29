@@ -49,7 +49,7 @@ Critérios de Avaliação:
 
 	- Java 21+
 	- Gradle (or use the wrapper: `./gradlew`)
-	- Git (optional, for cloning the repository)
+	- Git (for cloning the repository)
 
 ---
 
@@ -61,6 +61,7 @@ Critérios de Avaliação:
 	│   │   ├── java/
 	│   │   │   ├── models/         # Core classes: Book, Author, User, Library, etc.
 	│   │   │   ├── exceptions/     # Custom exceptions
+	│   │   │   └── interfaces/     # Interfaces used for validation logic
 	│   │   │   └── utils/          # Centralized messages
 	│   └── test/
 	│       └── java/models/        # JUnit tests
@@ -72,8 +73,6 @@ Critérios de Avaliação:
 ## Running the project
 
 	1. Clone the repository
-	
-		cd library/app
 
 	2. Compile and run the application
 
