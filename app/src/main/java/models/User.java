@@ -3,8 +3,6 @@ import exceptions.UserHasBookException;
 import interfaces.Validatable;
 import static utils.Messages.*;
 
-import static utils.Messages.userAlreadyHasBook;
-
 
 /**
  * Represents a user in the library system.
