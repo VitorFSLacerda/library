@@ -7,7 +7,6 @@ package exceptions;
  * the existence of a user, but the specified user cannot be located.
  * </p>
  *
- * @author YourName
  */
 public class UserNotFoundException extends RuntimeException {
     /**
