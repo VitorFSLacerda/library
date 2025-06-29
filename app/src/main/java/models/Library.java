@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import exceptions.BookNotAvailableException;
 import exceptions.BookNotFoundException;
+import exceptions.UserHasNoBookException;
 import exceptions.UserNotFoundException;
 import utils.Messages;
 
@@ -40,6 +41,10 @@ public class Library {
     private List<User> users;
     private List<Author> authors;
 
+    /**
+     * Constructs a new Library instance with empty lists for books, users, and authors.
+     * Initializes the internal collections to ensure the library starts with no data.
+     */
     public Library() {
         this.books = new ArrayList<>();
         this.users = new ArrayList<>();
@@ -53,6 +58,7 @@ public class Library {
      * @param book the Book object to be registered in the library
      */
     public void registerBook(Book book) {
+        book.getAuthor().addBook(book);
         books.add(book);
         System.out.println(bookRegistered(book));
     }
@@ -164,30 +170,6 @@ public class Library {
     }
 
     /**
-     * Handles the process of returning a borrowed book for a given user.
-     * <p>
-     * This method searches for the user by their name. If the user is not found
-     * or has not borrowed any book, it prints an appropriate message and exits.
-     * Otherwise, it processes the return of the borrowed book, updates the user's
-     * status, and prints a success message.
-     *
-     * @param userName the name of the user returning the book
-     */
-    public void returnBook(String userName) {
-        User user = findUserByName(userName);
-        
-        if (user == null || !user.hasBorrowedBook()) {
-            System.out.println(userHasNoBookOrNotFound());
-            return;
-        }
-
-        Book book = user.getBorrowedBook();
-        book.returnBook();
-        user.returnBook();
-        System.out.println(bookSuccessfullyReturned(book));
-    }
-
-    /**
      * Generates a summary of all books in the library.
      * <p>
      * Iterates through the list of books and appends each book's string representation,
@@ -220,5 +202,40 @@ public class Library {
      */
     public List<Book> getAllBooks() {
         return this.books;
+    }
+
+    /**
+     * Handles the process of returning a borrowed book for a specific user.
+     * <p>
+     * This method locates the user by their name, validates that the user has a borrowed book,
+     * processes the return of the book, updates the user's borrowing status, and prints a confirmation message.
+     * </p>
+     *
+     * @param userName the name of the user returning the book
+     * @throws IllegalArgumentException if the user does not exist or has not borrowed any book
+     */
+    public void returnBook(String userName) {
+        User user = findUserByName(userName);
+        validateUserHasBorrowedBook(user);
+        Book book = user.getBorrowedBook();
+        book.returnBook();
+        user.returnBook();
+        System.out.println(bookSuccessfullyReturned(book));
+    }
+
+    /**
+     * Validates whether the specified user has borrowed a book.
+     * <p>
+     * If the user has not borrowed any book, this method throws a
+     * {@link UserHasNoBookException} with an appropriate message.
+     * </p>
+     *
+     * @param user the user to validate
+     * @throws UserHasNoBookException if the user has not borrowed any book
+     */
+    private void validateUserHasBorrowedBook(User user) {
+        if (!user.hasBorrowedBook()) {
+            throw new UserHasNoBookException(Messages.userHasNoBorrowedBook(user.getName()));
+        }
     }
 }

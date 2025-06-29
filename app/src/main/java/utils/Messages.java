@@ -65,16 +65,6 @@ public class Messages {
     }
 
     /**
-     * Returns a message indicating that the user either does not have a borrowed book
-     * or does not exist in the system.
-     *
-     * @return a message stating that the user has no borrowed book or was not found
-     */
-    public static String userHasNoBookOrNotFound() {
-        return "User does not have a borrowed book or does not exist.";
-    }
-
-    /**
      * Generates a success message indicating that the specified book has been returned.
      *
      * @param book the {@link Book} object that was returned
@@ -122,6 +112,16 @@ public class Messages {
      */
     public static String bookNotAvailable(String title) {
         return "Book '" + title + "' is already borrowed.";
+    }
+
+    /**
+     * Returns a message indicating that the specified user has no borrowed book to return.
+     *
+     * @param name the name of the user
+     * @return a message stating that the user has no borrowed book to return
+     */
+    public static String userHasNoBorrowedBook(String name) {
+        return "User '" + name + "' has no borrowed book to return.";
     }
 
     /**

@@ -21,6 +21,12 @@ public class User implements Validatable {
     private String name;
     private Book borrowedBook;
 
+    /**
+     * Constructs a new User with the specified name.
+     * Initializes the borrowedBook field to null.
+     *
+     * @param name the name of the user
+     */
     public User(String name) {
         this.name = name;
         this.borrowedBook = null;

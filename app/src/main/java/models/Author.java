@@ -1,4 +1,6 @@
 package models;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents an author with a name.
@@ -10,9 +12,16 @@ package models;
 public class Author {
 
     private String name;
+    private List<Book> books;
 
+    /**
+     * Constructs a new Author with the specified name and initializes the list of books.
+     *
+     * @param name the name of the author
+     */
     public Author(String name) {
         this.name = name;
+        this.books = new ArrayList<>();
     }
 
     /**
@@ -22,6 +31,26 @@ public class Author {
      */
     public String getName() { 
         return name; 
+    }
+
+    /**
+     * Adds a book to this author's list of books.
+     *
+     * @param book the book to be added
+     */
+    public void addBook(Book book) {
+        if (book != null && !books.contains(book)) {
+            books.add(book);
+        }
+    }
+
+    /**
+     * Returns an unmodifiable list of books written by the author.
+     *
+     * @return list of books
+     */
+    public List<Book> getBooks() {
+        return books;
     }
         
     /**

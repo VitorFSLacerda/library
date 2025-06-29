@@ -43,7 +43,7 @@ public class LibraryTest {
 
         book1 = new Book("Clean Code", author1);
         book2 = new Book("Effective Java", author2);
-        bookCopy = new Book("Clean Code", author1);  // Second copy
+        bookCopy = new Book("Clean Code", author1);
 
         library.registerAuthor(author1);
         library.registerAuthor(author2);

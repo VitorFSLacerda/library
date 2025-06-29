@@ -28,7 +28,7 @@ public class Main {
         library.registerUser(user2);
 
         printSection("INITIAL BOOK LIST");
-        library.getBooksSummary();
+        System.out.println(library.getBooksSummary());
 
         printSection("ALICE BORROWS 'Clean Code'");
         tryToBorrow(library, "Clean Code", "Alice"); // should succeed
@@ -52,7 +52,7 @@ public class Main {
         tryToBorrow(library, "Effective Java", "Carlos");
 
         printSection("FINAL BOOK LIST");
-        library.getBooksSummary();
+        System.out.println(library.getBooksSummary());
 
         printSection("FINAL USER STATUS");
         showUserStatus(user1);

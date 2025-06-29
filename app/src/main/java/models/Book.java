@@ -20,6 +20,13 @@ public class Book implements Borrowable, Returnable{
     private BookStatus status;
     private User borrowedBy;
 
+    /**
+     * Constructs a new Book with the specified title and author.
+     * The book's status is set to AVAILABLE and it is not borrowed by any user.
+     *
+     * @param title  the title of the book
+     * @param author the author of the book
+     */
     public Book(String title, Author author) {
         this.title = title;
         this.author = author;
