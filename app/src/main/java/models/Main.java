@@ -20,8 +20,11 @@ public class Main {
         // ==== Registering Users ====
         registerUser(library, "Alice");
         printUsers(library, "USER LIST STATUS");
-        
+
         registerUser(library, "Bob");
+        printUsers(library, "USER LIST STATUS");
+
+        registerUser(library, "Carlos");
         printUsers(library, "USER LIST STATUS");
 
         // ==== Borrowing and Returning ====
@@ -31,6 +34,11 @@ public class Main {
 
         printSection("BOB BORROWS 'Clean Code'");
         tryToBorrow(library, "Clean Code", "Bob");
+        printBooks(library, "BOOK LIST STATUS");
+
+        printSection("CARLOS TRIES TO BORROW 'Clean Code' (all copies borrowed)");
+        tryToBorrow(library, "Clean Code", "Carlos");
+        printUsers(library, "USER LIST STATUS");
         printBooks(library, "BOOK LIST STATUS");
 
         printSection("BOB TRIES TO BORROW 'Effective Java'");
@@ -49,7 +57,7 @@ public class Main {
         tryToBorrow(library, "Java 101", "Alice");
 
         printSection("TRYING TO BORROW WITH NON-EXISTENT USER");
-        tryToBorrow(library, "Effective Java", "Carlos");
+        tryToBorrow(library, "Effective Java", "Felipe");
 
         // ==== Final State ====
         printBooks(library, "FINAL BOOK LIST");
