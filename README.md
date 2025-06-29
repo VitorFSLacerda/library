@@ -138,10 +138,11 @@ It facilitates friendly user messages and clean logging.
 
 Defined exceptions:
 
-BookNotFoundException: Book title is not registered in the library.
-BookNotAvailableException: All copies of the book are currently borrowed.
-UserNotFoundException: User name is not registered.
-UserHasBookException: The user has already borrowed a book.
+- BookNotFoundException: Book title is not registered in the library.
+- BookNotAvailableException: All copies of the book are currently borrowed.
+- UserNotFoundException: User name is not registered.
+- UserHasBookException: The user has already borrowed a book.
+- UserHasNoBookException: The user has no borrowed book to return.
 
 ---
 
