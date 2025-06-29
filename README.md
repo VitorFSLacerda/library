@@ -118,6 +118,10 @@ follows the Single Responsibility Principle, separating domain logic from the en
 User, Book, Author: These are simple entity classes representing the core objects of the system. Each class encapsulates 
 its own behavior. I intentionally avoided assigning additional responsibilities to keep them cohesive and reusable.
 
+interfaces package: Interfaces were used to define generic and reusable behaviors in the system, keeping the code organized and cohesive.
+Validatable allows entities to validate their own state (a user checking if they already have a borrowed book). Returnable defines a contract 
+for objects that can be returned (such as books). Borrowable represents items that can be borrowed by users, encapsulating the borrowing logic.
+
 exceptions package: I created custom exceptions to capture different types of runtime errors clearly and without relying on 
 scattered if conditions. This avoids mixing flow control logic with error checking, promoting clean and expressive code.
 
