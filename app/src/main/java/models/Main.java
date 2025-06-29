@@ -119,7 +119,7 @@ public class Main {
      * @param title    the title of the book to be borrowed
      * @param userName the name of the user attempting to borrow the book
      */
-    public static void tryToBorrow(Library library, String title, String userName) {
+    private static void tryToBorrow(Library library, String title, String userName) {
         try {
             library.borrowBook(title, userName);
         } catch (RuntimeException e) {
@@ -133,7 +133,7 @@ public class Main {
      *
      * @param title the title of the section to be printed
      */
-    public static void printSection(String title) {
+    private static void printSection(String title) {
         System.out.println("\n========== " + title + " ==========");
     }
 }
